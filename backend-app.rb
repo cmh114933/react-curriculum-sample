@@ -1,4 +1,5 @@
 require "sinatra"
+require "byebug"
 
 get "/images" do
   response["Access-Control-Allow-Origin"] = "*"
@@ -22,4 +23,21 @@ get "/users" do
            "31,40",
            "41,50",
          ].to_json
+end
+
+options "/login" do
+  response["Access-Control-Allow-Origin"] = "*"
+  response["Access-Control-Allow-Methods"] = "POST"
+  response["Access-Control-Allow-Headers"] = "Origin,Content-Type"
+end
+
+post "/login" do
+  response["Access-Control-Allow-Origin"] = "*"
+  response["Access-Control-Allow-Methods"] = "POST"
+  data = JSON.parse(request.body.read)
+  if data["email"] == "test@test.com" && data["password"] == "password"
+    headers["Authorization"] = "Bearer testing123"
+    return {}.to_json
+  end
+  return {error: "Incorrect password or email"}.to_json
 end

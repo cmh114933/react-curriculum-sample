@@ -32,6 +32,7 @@
 }
 
 .gallery-list {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
@@ -40,4 +41,11 @@
   height: 200px;
   width: 200px;
   margin: 10px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 200px;
 }

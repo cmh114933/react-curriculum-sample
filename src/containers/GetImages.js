@@ -25,7 +25,6 @@ export default class Home extends Component {
 
   render() {
     const { imageList } = this.state
-    console.log(imageList)
     return (
       <div>
         <button onClick={this._getImages}>Refresh</button>
