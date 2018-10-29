@@ -14,6 +14,15 @@ get "/images" do
   return images.to_json
 end
 
+get "/my_images" do
+  response["Access-Control-Allow-Origin"] = "*"
+  imgUrl = "https://picsum.photos/200/300?image="
+  images = []
+
+  images = (1..50).to_a.map { |num| imgUrl + num.to_s }
+  return images.to_json
+end
+
 get "/users" do
   response["Access-Control-Allow-Origin"] = "*"
   return [
@@ -40,4 +49,7 @@ post "/login" do
     return {}.to_json
   end
   return {error: "Incorrect password or email"}.to_json
+end
+
+post "/upload_image" do
 end

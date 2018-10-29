@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Link } from "react-router-dom";
+
+import { get } from '../utils/authorizedRequest'
+import { USERS_URL } from '../constants/APIS'
+
 export default class Users extends Component {
   state = {
     users: [],
@@ -8,7 +11,7 @@ export default class Users extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4567/users')
+    get(USERS_URL)
       .then((response) => {
         this.setState({ users: response.data })
       }).catch((err) => {
@@ -20,7 +23,6 @@ export default class Users extends Component {
     const { users } = this.state
     return (
       <div>
-        <p>Hello</p>
         <ul>
           {
             users.map((user, index) => {

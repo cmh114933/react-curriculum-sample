@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 
+import { get } from '../utils/authorizedRequest'
 import ImagesList from '../components/ImagesList'
+import { IMAGES_URL, MY_IMAGES_URL } from '../constants/APIS'
 
 export default class Home extends Component {
   state = {
@@ -10,8 +11,13 @@ export default class Home extends Component {
   }
 
   _getImages = () => {
-    const { userId } = this.props
-    axios.get(`http://localhost:4567/images${userId ? `?userId=${userId}` : ''}`)
+    const { userId, profilePage } = this.props
+    const imageUrl = profilePage
+      ? MY_IMAGES_URL
+      : userId
+        ? `${IMAGES_URL}?userId=${userId}`
+        : IMAGES_URL
+    get(imageUrl)
       .then((response) => {
         this.setState({ imageList: response.data })
       }).catch((err) => {

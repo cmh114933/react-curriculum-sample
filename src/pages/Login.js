@@ -29,6 +29,7 @@ export default class Login extends Component {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }).then((response) => {
+        console.log(response)
         localStorage.setItem("authToken", response.headers["Authorization"])
       }).catch((err) => {
         console.log(err)

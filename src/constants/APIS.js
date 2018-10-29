@@ -1,3 +1,5 @@
 export const LOGIN_URL = "http://localhost:4567/login"
 export const IMAGES_URL = "http://localhost:4567/images"
 export const USERS_URL = "http://localhost:4567/users"
+export const MY_IMAGES_URL = "http://localhost:4567/my_images"
+export const UPLOAD_IMAGE_URL = "http://localhost:4567/upload_image"
